@@ -62,6 +62,8 @@ static int shift=0;//speed or frequency
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 				
+					
+					
 				}
 				playerbullet.setx(x+30);
 				playerbullet.paint(g2d);
