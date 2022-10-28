@@ -44,11 +44,21 @@ static int wait;
 		for(int i=0;i<ship.size();i++) {//edit i accorfing to remove
 			ship.get(i).paint(g);
 			try{////////////////////////(sl,tbase,int th, int tx,int ty,int cy, int cx,int crad)
-				if(((new collision()).tc(1,29,33,Shoot.x+3,620,ship.get(i).ebullet.y+25,ship.get(i).ebullet.x,7)==true)||(new collision()).tc(-1,29,33,Shoot.x+32+3,620,ship.get(i).ebullet.y+25,ship.get(i).ebullet.x,7)==true) {
+				if(((new collision()).tc(1,29,33,Shoot.x+3,620,ship.get(i).ebullet.y+25,ship.get(i).ebullet.x,7,true)==true)||(new collision()).tc(-1,32-3,33,Shoot.x+29,650,ship.get(i).ebullet.y+25,ship.get(i).ebullet.x,7,true)==true) {
 					ship.get(i).hit=false;
 					if(ship.get(i).ebullet.notmissed)
-						Shoot.blood-=1;
+						Shoot.blood-=5;
 					ship.get(i).ebullet.notmissed=false;
+				}
+				if(((new collision()).tc(-2.14,24,25,ship.get(i).r+12,ship.get(i).y+30,Shoot.playerbullet.y-20,Shoot.playerbullet.x,7,false)==true)||(new collision()).tc(2.14,23,25,ship.get(i).r+23,ship.get(i).y+10,Shoot.playerbullet.y-20,Shoot.playerbullet.x,7,false)==true) {
+					ship.get(i).setY(700);
+					Shoot.hit++;
+					Shoot.playerbullet.sety(0);Shoot.playerballvisible=Shoot.playerbullet.getvisible();
+				}
+				if(((new collision()).tc(-2.14,24,25,ship.get(i).r+12,ship.get(i).y+30,Shoot.playerbullet2.y-20,Shoot.playerbullet2.x,7,false)==true)||(new collision()).tc(2.14,23,25,ship.get(i).r+23,ship.get(i).y+10,Shoot.playerbullet2.y-20,Shoot.playerbullet2.x,7,false)==true) {
+					ship.get(i).setY(700);
+					Shoot.hit++;
+					Shoot.playerbullet2.sety(0);Shoot.playerballvisible2=Shoot.playerbullet2.getvisible();
 				}
 			}
 			catch(Exception e){

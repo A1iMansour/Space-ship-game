@@ -15,11 +15,13 @@ import java.awt.Font;
 public class Shoot extends JPanel {
 static int x=350;
 static int playerballvisible=0;
+static int playerballvisible2=0;
 //static int ballx=x;
 static boolean shot=false;
 
 static int start=0;
-bullet playerbullet= new bullet(590,true);
+static bullet playerbullet= new bullet(590,true);
+static bullet playerbullet2= new bullet(590,true);
 static music j= new music();
 static int backgroundindex1=-577;
 static int backgroundindex2=-1854;//-1277
@@ -31,7 +33,8 @@ static int blood=97;//for blood
 static int freq=300;
 static int paused=0;
 static int shift=0;//speed or frequency
-
+static int shoot=0;
+static int hit=0;
 
 	public void paint(Graphics g) {
 		super.paint(g);
@@ -70,6 +73,23 @@ static int shift=0;//speed or frequency
 				
 				playerbullet.move(-9);
 				playerballvisible=playerbullet.getvisible();
+
+			}
+			if( playerballvisible2>0){
+			
+				try {
+					playerbullet2.playsound(1);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+				
+					
+					
+				}
+				playerbullet2.setx(x+30);
+				playerbullet2.paint(g2d);
+				
+				playerbullet2.move(-9);
+				playerballvisible2=playerbullet2.getvisible();
 
 			}
 			panel(g2d);
@@ -127,7 +147,14 @@ static int shift=0;//speed or frequency
 		x+=15+speed;
 	}
 	public  void shoot(){
-		playerballvisible=1;
+		if(playerballvisible==0) {
+			shoot++;
+			playerballvisible=1;
+		}
+		else if(playerballvisible2==0) {
+			shoot++;
+			playerballvisible2=1;
+		}
 		/*if(ballloc==610)//to start bullet from ship position
 		shot=true;*/
 	}
@@ -220,12 +247,16 @@ static int shift=0;//speed or frequency
 		g2d.setColor(Color.green);
 		g2d.drawString("PLayer", 715, 100);//player's name
 		g2d.setFont(new Font("Helvetica", Font.PLAIN, 13));
-		g2d.drawString("Level: ", 715, 140);//player's level
-		g2d.drawString("Hits: ", 715, 170);//player's score
-		g2d.drawString("Life ", 715, 200);
-		g2d.drawRect(715, 210, 100, 10);//for player's blood
+		g2d.drawString("Shoots: "+shoot, 715, 140);//player's level
+		g2d.drawString("Hits: "+hit, 715, 170);//player's score
+		g2d.drawString("Life ", 715, 230);
+		if(shoot==0)
+			g2d.drawString("Score: "+(hit/1), 715, 200);
+		else
+			g2d.drawString("Score: "+(Math.round((0.0+hit)/shoot*100)), 715, 200);
+		g2d.drawRect(715, 240, 100, 10);//for player's blood
 		g2d.setColor(Color.red);
-		g2d.fillRect(717, 212, blood, 7);//varies w.r.t blood
+		g2d.fillRect(717, 242, blood, 7);//varies w.r.t blood
 		
 
 		g2d.setColor(Color.white);

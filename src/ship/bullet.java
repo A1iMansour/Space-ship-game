@@ -63,7 +63,7 @@ public class bullet extends JPanel {
 	}
 	public int getvisible() {
 		if(y<=0) {
-			x=-1;//ballvisible=-1
+			x=-1;//to not follow plane see set x
 			y=prevy;
 			played=0;
 			return 0;
@@ -85,7 +85,7 @@ public class bullet extends JPanel {
 		music s = new music();
 		s.setFile(i);
 		s.play();
-		Thread.sleep(60);
+		Thread.sleep(10);
 		played =1;
 		}
 		

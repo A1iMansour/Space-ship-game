@@ -31,6 +31,10 @@ public class enemy extends JPanel{
 			Graphics2D g2d = (Graphics2D) g;
 			Image img1 = new ImageIcon(getClass().getResource("/images/rocket.png")).getImage();
 			g2d.drawImage(img1,r, y, this);
+			//g2d.drawLine(r+12, y+20, r+27, y+53);
+			//g2d.drawLine(r+27, y+53, r+38, y+20);
+						// g2d.drawLine(x, 620, x+32, 580-32);
+						// g2d.drawLine(x+64, 620, x+32, 580-32);
 			move();
 			if (hit) {
 			if( eballvisible<=80){
@@ -86,6 +90,9 @@ public class enemy extends JPanel{
 
 	public void move() {
 		y+=1+Shoot.speed-1;
+	}
+	public void setY(int y) {
+		this.y=y;
 	}
 	public int xposition() {
 		return r;
