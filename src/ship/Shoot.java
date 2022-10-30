@@ -121,6 +121,7 @@ static int hit=0;
 			 g2d.drawString("Game Paused", 250, 310);
 		}
 		else if(start==3) {//for gameover
+			paused=1;
 			Image imgs1 = new ImageIcon(getClass().getResource("/images/back.png")).getImage();
 		    g2d.drawImage(imgs1,0,backgroundindex1, this);
 		    g2d.drawImage(imgs1,0,backgroundindex2, this);
@@ -161,7 +162,15 @@ static int hit=0;
 	public  void start(){
 		start=1;
 	}
-
+	public  void restart(){
+		paused=0;
+		blood=97;
+		start=1;
+		enemies.ship.clear();
+		shoot=0;
+		hit=0;
+		enemies.numberofships=0;
+	}
 	public  void pause(){
 		if (start==1) {
 			start=2;
@@ -274,6 +283,7 @@ static int hit=0;
 		g2d.drawRect(700, 451, 10, 10);
 		g2d.drawString("Speed:(1-9)", 715, 520);
 		g2d.drawString("Click \"P\" to pause", 715, 580);
+		g2d.drawString("Click \"R\" to restart", 715, 620);
 		g2d.drawString("Frequency:(1-9)", 715, 460);//above 9 set to 9, less than 0 set t0 0
 		g2d.drawString("Options ", 715, 400);
 		g2d.setColor(Color.green);

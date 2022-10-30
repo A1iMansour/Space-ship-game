@@ -27,9 +27,11 @@ static int wait;
 	}
 	public static void remove(enemy e) {
 		//System.out.println("removed: "+e);/////////
-		ship.remove(positions.indexOf(e.xposition()));
+		if(ship.indexOf(e)!=-1) {//cause when restarting the game list will be empty
+		ship.remove(ship.indexOf(e));/////////positions.indexOf(e.xposition())
 		positions.remove(positions.indexOf(e.xposition()));
 		numberofships--;
+		}
 	}
 	public static void enemiesgenerator(Graphics g) {
 		if(wait>Shoot.freq-Shoot.speed*4) {

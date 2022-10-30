@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class bullet extends JPanel {
-	int x=-1;
+	int x=-100;
 	int y;
 	int prevy;
 	int played=0;
@@ -32,11 +32,11 @@ public class bullet extends JPanel {
 		}
 	}
 	public  void setx(int t) {//to prevent bullet from following ship
-		if(x==-1) {
+		if(x==-100) {
 			x=t;
 		}
 	}
-	public  void setx2nd(int t) {//to prevent x from moving
+	public  void setx2nd(int t) {//to restart x
 		
 			x=t;
 		
@@ -63,7 +63,7 @@ public class bullet extends JPanel {
 	}
 	public int getvisible() {
 		if(y<=0) {
-			x=-1;//to not follow plane see set x
+			x=-100;//to not follow plane see set x
 			y=prevy;
 			played=0;
 			return 0;

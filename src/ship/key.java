@@ -11,6 +11,9 @@ public key(Shoot s){
 }
 
     public void keyPressed(KeyEvent e) { 
+    	if(e.getKeyCode() == KeyEvent.VK_R) {
+    		s.restart();
+    	}
     	if(Shoot.paused==0) {
     		if(e.getKeyCode() == KeyEvent.VK_RIGHT) 
     			Shoot.moveright();    

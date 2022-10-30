@@ -37,7 +37,8 @@ public class enemy extends JPanel{
 						// g2d.drawLine(x+64, 620, x+32, 580-32);
 			move();
 			if (hit) {
-			if( eballvisible<=80){
+				
+			if( eballvisible<=110-Shoot.speed*9){
 				
 				if(soundplayed==-1) {
 					try {
@@ -51,7 +52,7 @@ public class enemy extends JPanel{
 					}
 				}
 				
-				ebullet.setx(r+20);
+				ebullet.setx(r+20);//
 				ebullet.paint(g2d);
 				
 				ebullet.move(4+Shoot.speed);
@@ -65,7 +66,7 @@ public class enemy extends JPanel{
 				soundplayed=-1;
 				ebullet.sety(y+45);
 				eballvisible=0;
-				ebullet.setx2nd(-1);//to restart x
+				ebullet.setx2nd(-100);//to restart x
 				//eballvisible=1;
 				
 			}
@@ -99,7 +100,6 @@ public class enemy extends JPanel{
 	}
 	public boolean disapeared() {//ship reached end
 		if (y>=700) {
-			
 			enemies.remove(this);
 	    	return true;
 	    }
