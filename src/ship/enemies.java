@@ -25,11 +25,11 @@ static int wait;
 		positions.add(e.xposition());
 		numberofships++;
 	}
-	public static void remove(enemy e) {
+	public static void remove(enemy e,int r) {
 		//System.out.println("removed: "+e);/////////
 		if(ship.indexOf(e)!=-1) {//cause when restarting the game list will be empty
 		ship.remove(ship.indexOf(e));/////////positions.indexOf(e.xposition())
-		positions.remove(positions.indexOf(e.xposition()));
+		positions.remove(positions.indexOf(r));
 		numberofships--;
 		}
 	}

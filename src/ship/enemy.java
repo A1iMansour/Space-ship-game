@@ -10,19 +10,41 @@ import javax.swing.JPanel;
 
 public class enemy extends JPanel{
 	int y=0;
-	int r=0;
+	int r=0;//for x coordinate
+	int prevr=0;//to be removed in enemies list, r changes in oblique
+	static int counter=0;//for generating ship from y!=0
+	boolean movingx=false;//to move rocket oblique
+	int xmoved=0;//to move rocket oblique
 	int eballvisible=1;
 	bullet ebullet=new bullet(45,false);
 	int soundplayed=-1;
 	int xmovement=angle();
 	boolean hit=true;//true if not hit
 	int eballvisible2=1;//to stop bullets till certain time
-	public enemy() {
+	public enemy() {//Constructor
 			Random x= new Random();
 			r=x.nextInt(610);
 			while(enemies.positionofship(r)) {
 				r=x.nextInt(610);
 				}
+			if(counter>3) {
+				System.out.println("acc");
+				counter=0;
+				y=x.nextInt(300);
+				ebullet.sety(y+45);
+				movingx=true;
+				int []s= {0,610};
+				r=s[x.nextInt(2)];
+				if(r==0)
+					xmoved=1;
+				else
+					xmoved=-1;
+			}
+			else {
+				counter++;
+				movingx=false;
+			}
+			prevr=r;
 			enemies.addship(this);
 	}
 	public void paint(Graphics g) {
@@ -35,7 +57,7 @@ public class enemy extends JPanel{
 			//g2d.drawLine(r+27, y+53, r+38, y+20);
 						// g2d.drawLine(x, 620, x+32, 580-32);
 						// g2d.drawLine(x+64, 620, x+32, 580-32);
-			move();
+			move(movingx);
 			if (hit) {
 				
 			if( eballvisible<=110-Shoot.speed*9){
@@ -88,9 +110,11 @@ public class enemy extends JPanel{
 	    
 	}
 
-
-	public void move() {
+	public void move(boolean j) {
 		y+=1+Shoot.speed-1;
+		if(j) {
+			r+=xmoved+Shoot.speed-1;
+		}
 	}
 	public void setY(int y) {
 		this.y=y;
@@ -99,8 +123,8 @@ public class enemy extends JPanel{
 		return r;
 	}
 	public boolean disapeared() {//ship reached end
-		if (y>=700) {
-			enemies.remove(this);
+		if (y>=700||r>700||r<0) {
+			enemies.remove(this,prevr);
 	    	return true;
 	    }
 		else return false;
