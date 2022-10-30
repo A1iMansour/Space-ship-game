@@ -113,7 +113,10 @@ public class enemy extends JPanel{
 	public void move(boolean j) {
 		y+=1+Shoot.speed-1;
 		if(j) {
-			r+=xmoved+Shoot.speed-1;
+			if(xmoved==1)
+				r+=Shoot.speed;
+			if(xmoved==-1)
+				r+=-Shoot.speed;
 		}
 	}
 	public void setY(int y) {
