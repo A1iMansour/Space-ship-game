@@ -54,7 +54,7 @@ public class enemy extends JPanel{
 				ebullet.setx(r+20);
 				ebullet.paint(g2d);
 				
-				ebullet.move(9);
+				ebullet.move(4+Shoot.speed);
 				ebullet.movex(xmovement);
 				eballvisible++;
 				//eballvisible=ebullet.getvisibleenemy(eballvisible);

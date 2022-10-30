@@ -50,12 +50,12 @@ static int wait;
 						Shoot.blood-=5;
 					ship.get(i).ebullet.notmissed=false;
 				}
-				if(((new collision()).tc(-2.14,24,25,ship.get(i).r+12,ship.get(i).y+30,Shoot.playerbullet.y-20,Shoot.playerbullet.x,7,false)==true)||(new collision()).tc(2.14,23,25,ship.get(i).r+23,ship.get(i).y+10,Shoot.playerbullet.y-20,Shoot.playerbullet.x,7,false)==true) {
+				if(((new collision()).tc(-2.14,24,20,ship.get(i).r+12,ship.get(i).y+30,Shoot.playerbullet.y-20,Shoot.playerbullet.x,7,false)==true)||(new collision()).tc(2,19,20,ship.get(i).r+20,ship.get(i).y+10,Shoot.playerbullet.y-20,Shoot.playerbullet.x,7,false)==true) {
 					ship.get(i).setY(700);
 					Shoot.hit++;
 					Shoot.playerbullet.sety(0);Shoot.playerballvisible=Shoot.playerbullet.getvisible();
 				}
-				if(((new collision()).tc(-2.14,24,25,ship.get(i).r+12,ship.get(i).y+30,Shoot.playerbullet2.y-20,Shoot.playerbullet2.x,7,false)==true)||(new collision()).tc(2.14,23,25,ship.get(i).r+23,ship.get(i).y+10,Shoot.playerbullet2.y-20,Shoot.playerbullet2.x,7,false)==true) {
+				if(((new collision()).tc(-2.14,24,20,ship.get(i).r+12,ship.get(i).y+30,Shoot.playerbullet2.y-20,Shoot.playerbullet2.x,7,false)==true)||(new collision()).tc(2,19,20,ship.get(i).r+20,ship.get(i).y+10,Shoot.playerbullet2.y-20,Shoot.playerbullet2.x,7,false)==true) {
 					ship.get(i).setY(700);
 					Shoot.hit++;
 					Shoot.playerbullet2.sety(0);Shoot.playerballvisible2=Shoot.playerbullet2.getvisible();

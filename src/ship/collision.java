@@ -1,15 +1,26 @@
 package ship;
 
+import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
 public class collision {
+	int x;
+	int y;
+	int x2;
+	int y2;
+
 	
 	
 	public boolean tc(double slope, int tbase,int th, int tx,int ty,int cy, int cx,int crad,boolean t) {//isosceles triangle circle collision
+		
+		x=tx;
+		y=ty-th;
+		y2=(int)slope*tx+ty-th;
+		x2=tbase;
 		boolean c=false;
-		if(cx>=tx && cx<=tx+tbase) {
+		if(cx>=tx && cx<=tx+tbase) {/////////////
 			//System.out.println("bulletx: "+cx+"bullety: "+cy +"planex"+tx + "width "+tbase+"ty"+ty);
 			if((t&&cy>=slope*(cx-tx)+ty-th)&&cy<700) {
 				//System.out.println("wwbulletx: "+cx+"bullety: "+cy +"planex"+tx+ "width "+tbase);

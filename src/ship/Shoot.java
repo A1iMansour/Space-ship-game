@@ -71,7 +71,7 @@ static int hit=0;
 				playerbullet.setx(x+30);
 				playerbullet.paint(g2d);
 				
-				playerbullet.move(-9);
+				playerbullet.move(-8-speed);////////////
 				playerballvisible=playerbullet.getvisible();
 
 			}
@@ -88,7 +88,7 @@ static int hit=0;
 				playerbullet2.setx(x+30);
 				playerbullet2.paint(g2d);
 				
-				playerbullet2.move(-9);
+				playerbullet2.move(-9);///////////////
 				playerballvisible2=playerbullet2.getvisible();
 
 			}
@@ -253,7 +253,7 @@ static int hit=0;
 		if(shoot==0)
 			g2d.drawString("Score: "+(hit/1), 715, 200);
 		else
-			g2d.drawString("Score: "+(Math.round((0.0+hit)/shoot*100)), 715, 200);
+			g2d.drawString("Score: "+(Math.round((0.0+hit)/shoot*100))+" %", 715, 200);
 		g2d.drawRect(715, 240, 100, 10);//for player's blood
 		g2d.setColor(Color.red);
 		g2d.fillRect(717, 242, blood, 7);//varies w.r.t blood
